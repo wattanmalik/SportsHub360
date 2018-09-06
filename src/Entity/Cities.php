@@ -28,6 +28,12 @@ class Cities
      */
     private $citiesRegions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Academy", inversedBy="City")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $academy;
+
     public function __construct()
     {
         $this->citiesRegions = new ArrayCollection();
@@ -77,6 +83,18 @@ class Cities
                 $citiesRegion->setRegion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAcademy(): ?Academy
+    {
+        return $this->academy;
+    }
+
+    public function setAcademy(?Academy $academy): self
+    {
+        $this->academy = $academy;
 
         return $this;
     }
