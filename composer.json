@@ -14,6 +14,7 @@
         "symfony/dependency-injection": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
+        "symfony/maker-bundle": "^1.7",
         "symfony/routing": "*",
         "symfony/templating": "*",
         "symfony/yaml": "*"
