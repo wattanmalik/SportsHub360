@@ -28,9 +28,15 @@ class Sports
      */
     private $academies;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Academy", mappedBy="OtherSports")
+     */
+    private $academiesOtherSports;
+
     public function __construct()
     {
         $this->academies = new ArrayCollection();
+        $this->academiesOtherSports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,6 +79,37 @@ class Sports
         if ($this->academies->contains($academy)) {
             $this->academies->removeElement($academy);
             $academy->removeSportsId($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Academy[]
+     */
+    public function getAcademiesOtherSports(): Collection
+    {
+        return $this->academiesOtherSports;
+    }
+
+    public function addAcademiesOtherSport(Academy $academiesOtherSport): self
+    {
+        if (!$this->academiesOtherSports->contains($academiesOtherSport)) {
+            $this->academiesOtherSports[] = $academiesOtherSport;
+            $academiesOtherSport->setOtherSports($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAcademiesOtherSport(Academy $academiesOtherSport): self
+    {
+        if ($this->academiesOtherSports->contains($academiesOtherSport)) {
+            $this->academiesOtherSports->removeElement($academiesOtherSport);
+            // set the owning side to null (unless already changed)
+            if ($academiesOtherSport->getOtherSports() === $this) {
+                $academiesOtherSport->setOtherSports(null);
+            }
         }
 
         return $this;

@@ -38,6 +38,31 @@ class Academy
      */
     private $Description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $FacebookUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $TwitterUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $LinkedInUrl;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sports", inversedBy="academiesOtherSports")
+     */
+    private $OtherSports;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\OpeningHours", inversedBy="AcademyId")
+     */
+    private $openingHours;
+
     public function __construct()
     {
         $this->SportsId = new ArrayCollection();
@@ -126,6 +151,66 @@ class Academy
     public function setDescription(string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getFacebookUrl(): ?string
+    {
+        return $this->FacebookUrl;
+    }
+
+    public function setFacebookUrl(?string $FacebookUrl): self
+    {
+        $this->FacebookUrl = $FacebookUrl;
+
+        return $this;
+    }
+
+    public function getTwitterUrl(): ?string
+    {
+        return $this->TwitterUrl;
+    }
+
+    public function setTwitterUrl(?string $TwitterUrl): self
+    {
+        $this->TwitterUrl = $TwitterUrl;
+
+        return $this;
+    }
+
+    public function getLinkedInUrl(): ?string
+    {
+        return $this->LinkedInUrl;
+    }
+
+    public function setLinkedInUrl(?string $LinkedInUrl): self
+    {
+        $this->LinkedInUrl = $LinkedInUrl;
+
+        return $this;
+    }
+
+    public function getOtherSports(): ?Sports
+    {
+        return $this->OtherSports;
+    }
+
+    public function setOtherSports(?Sports $OtherSports): self
+    {
+        $this->OtherSports = $OtherSports;
+
+        return $this;
+    }
+
+    public function getOpeningHours(): ?OpeningHours
+    {
+        return $this->openingHours;
+    }
+
+    public function setOpeningHours(?OpeningHours $openingHours): self
+    {
+        $this->openingHours = $openingHours;
 
         return $this;
     }

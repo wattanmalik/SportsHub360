@@ -61,6 +61,26 @@ class ContactDetails
      */
     private $ListingWebsite;
 
+    /**
+     * @ORM\Column(type="string", length=15, nullable=true)
+     */
+    private $AcademyPhone3;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $AcademyContact3;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $Latitude;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $Longitude;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +190,54 @@ class ContactDetails
     public function setListingWebsite(?string $ListingWebsite): self
     {
         $this->ListingWebsite = $ListingWebsite;
+
+        return $this;
+    }
+
+    public function getAcademyPhone3(): ?string
+    {
+        return $this->AcademyPhone3;
+    }
+
+    public function setAcademyPhone3(?string $AcademyPhone3): self
+    {
+        $this->AcademyPhone3 = $AcademyPhone3;
+
+        return $this;
+    }
+
+    public function getAcademyContact3(): ?string
+    {
+        return $this->AcademyContact3;
+    }
+
+    public function setAcademyContact3(?string $AcademyContact3): self
+    {
+        $this->AcademyContact3 = $AcademyContact3;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->Latitude;
+    }
+
+    public function setLatitude(?string $Latitude): self
+    {
+        $this->Latitude = $Latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->Longitude;
+    }
+
+    public function setLongitude(?string $Longitude): self
+    {
+        $this->Longitude = $Longitude;
 
         return $this;
     }
