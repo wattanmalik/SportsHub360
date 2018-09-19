@@ -38,6 +38,11 @@ class OpeningHours
      */
     private $CloseAt;
 
+    /**
+     * @ORM\Column(type="string", length=12)
+     */
+    private $OpeningDay;
+
     public function __construct()
     {
         $this->AcademyId = new ArrayCollection();
@@ -111,6 +116,18 @@ class OpeningHours
     public function setCloseAt(?\DateTimeInterface $CloseAt): self
     {
         $this->CloseAt = $CloseAt;
+
+        return $this;
+    }
+
+    public function getOpeningDay(): ?string
+    {
+        return $this->OpeningDay;
+    }
+
+    public function setOpeningDay(string $OpeningDay): self
+    {
+        $this->OpeningDay = $OpeningDay;
 
         return $this;
     }
