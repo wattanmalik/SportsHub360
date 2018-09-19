@@ -68,6 +68,11 @@ class Academy
      */
     private $gallery;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Facilities", inversedBy="AcademyId")
+     */
+    private $facilities;
+
     public function __construct()
     {
         $this->SportsId = new ArrayCollection();
@@ -228,6 +233,18 @@ class Academy
     public function setGallery(?Gallery $gallery): self
     {
         $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    public function getFacilities(): ?Facilities
+    {
+        return $this->facilities;
+    }
+
+    public function setFacilities(?Facilities $facilities): self
+    {
+        $this->facilities = $facilities;
 
         return $this;
     }
