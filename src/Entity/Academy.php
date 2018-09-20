@@ -109,10 +109,26 @@ class Academy
      */
     private $staffDetails;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tournaments", inversedBy="AcademyId")
+     */
+    private $tournaments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Achievements", inversedBy="AcademyId")
+     */
+    private $achievements;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\FeeStructures", mappedBy="AcademyId")
+     */
+    private $feeStructures;
+
     public function __construct()
     {
         $this->SportsId = new ArrayCollection();
         $this->City = new ArrayCollection();
+        $this->feeStructures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -369,6 +385,61 @@ class Academy
         // set the owning side of the relation if necessary
         if ($this !== $staffDetails->getAcademyId()) {
             $staffDetails->setAcademyId($this);
+        }
+
+        return $this;
+    }
+
+    public function getTournaments(): ?Tournaments
+    {
+        return $this->tournaments;
+    }
+
+    public function setTournaments(?Tournaments $tournaments): self
+    {
+        $this->tournaments = $tournaments;
+
+        return $this;
+    }
+
+    public function getAchievements(): ?Achievements
+    {
+        return $this->achievements;
+    }
+
+    public function setAchievements(?Achievements $achievements): self
+    {
+        $this->achievements = $achievements;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|FeeStructures[]
+     */
+    public function getFeeStructures(): Collection
+    {
+        return $this->feeStructures;
+    }
+
+    public function addFeeStructure(FeeStructures $feeStructure): self
+    {
+        if (!$this->feeStructures->contains($feeStructure)) {
+            $this->feeStructures[] = $feeStructure;
+            $feeStructure->setAcademyId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFeeStructure(FeeStructures $feeStructure): self
+    {
+        if ($this->feeStructures->contains($feeStructure)) {
+            $this->feeStructures->removeElement($feeStructure);
+            // set the owning side to null (unless already changed)
+            if ($feeStructure->getAcademyId() === $this) {
+                $feeStructure->setAcademyId(null);
+            }
         }
 
         return $this;
