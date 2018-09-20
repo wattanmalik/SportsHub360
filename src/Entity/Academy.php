@@ -73,6 +73,42 @@ class Academy
      */
     private $facilities;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Amenities", inversedBy="AcademyId")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $amenities;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\HostelFacility", inversedBy="AcademyId")
+     */
+    private $hostelFacility;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ParentsWaitingArea;
+
+    /**
+     * @ORM\Column(type="string", length=15, nullable=true)
+     */
+    private $ConditionOfParentsWaitingArea;
+
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $AgeGroupMinimum;
+
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $AgeGroupMaximum;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\StaffDetails", mappedBy="AcademyId", cascade={"persist", "remove"})
+     */
+    private $staffDetails;
+
     public function __construct()
     {
         $this->SportsId = new ArrayCollection();
@@ -245,6 +281,95 @@ class Academy
     public function setFacilities(?Facilities $facilities): self
     {
         $this->facilities = $facilities;
+
+        return $this;
+    }
+
+    public function getAmenities(): ?Amenities
+    {
+        return $this->amenities;
+    }
+
+    public function setAmenities(?Amenities $amenities): self
+    {
+        $this->amenities = $amenities;
+
+        return $this;
+    }
+
+    public function getHostelFacility(): ?HostelFacility
+    {
+        return $this->hostelFacility;
+    }
+
+    public function setHostelFacility(?HostelFacility $hostelFacility): self
+    {
+        $this->hostelFacility = $hostelFacility;
+
+        return $this;
+    }
+
+    public function getParentsWaitingArea(): ?bool
+    {
+        return $this->ParentsWaitingArea;
+    }
+
+    public function setParentsWaitingArea(?bool $ParentsWaitingArea): self
+    {
+        $this->ParentsWaitingArea = $ParentsWaitingArea;
+
+        return $this;
+    }
+
+    public function getConditionOfParentsWaitingArea(): ?string
+    {
+        return $this->ConditionOfParentsWaitingArea;
+    }
+
+    public function setConditionOfParentsWaitingArea(?string $ConditionOfParentsWaitingArea): self
+    {
+        $this->ConditionOfParentsWaitingArea = $ConditionOfParentsWaitingArea;
+
+        return $this;
+    }
+
+    public function getAgeGroupMinimum(): ?int
+    {
+        return $this->AgeGroupMinimum;
+    }
+
+    public function setAgeGroupMinimum(int $AgeGroupMinimum): self
+    {
+        $this->AgeGroupMinimum = $AgeGroupMinimum;
+
+        return $this;
+    }
+
+    public function getAgeGroupMaximum(): ?int
+    {
+        return $this->AgeGroupMaximum;
+    }
+
+    public function setAgeGroupMaximum(int $AgeGroupMaximum): self
+    {
+        $this->AgeGroupMaximum = $AgeGroupMaximum;
+
+        return $this;
+    }
+
+    public function getStaffDetails(): ?StaffDetails
+    {
+        return $this->staffDetails;
+    }
+
+    public function setStaffDetails(StaffDetails $staffDetails): self
+    {
+        $this->staffDetails = $staffDetails;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $staffDetails->getAcademyId()) {
+            $staffDetails->setAcademyId($this);
+        }
 
         return $this;
     }
