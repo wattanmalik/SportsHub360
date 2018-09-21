@@ -13,10 +13,12 @@
         "symfony/console": "*",
         "symfony/dependency-injection": "*",
         "symfony/flex": "^1.1",
+        "symfony/form": "*",
         "symfony/framework-bundle": "*",
         "symfony/maker-bundle": "^1.7",
         "symfony/routing": "*",
         "symfony/templating": "*",
+        "symfony/validator": "*",
         "symfony/yaml": "*"
     },
     "require-dev": {
