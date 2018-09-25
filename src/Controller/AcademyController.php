@@ -16,9 +16,9 @@ class AcademyController extends AbstractController
     // }
 
     /**
-     * @Route("/academy", name="academy")
+     * @Route("/academy/new", name="new_academy")
      */
-    public function academy()
+    public function new()
     {
         return $this->json([
             'message' => 'Welcome to your new controller academy!',

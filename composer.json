@@ -17,7 +17,9 @@
         "symfony/framework-bundle": "*",
         "symfony/maker-bundle": "^1.7",
         "symfony/routing": "*",
+        "symfony/security-csrf": "*",
         "symfony/templating": "*",
+        "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/yaml": "*"
     },

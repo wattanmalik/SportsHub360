@@ -1,6 +1,3 @@
 # home:
 #     path: /
 #     controller: App\Controller\AcademyController::index
-academy:
-    path: /academy
-    controller: App\Controller\AcademyController::academy
