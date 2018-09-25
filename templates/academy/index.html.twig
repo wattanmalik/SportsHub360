@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Academy index{% endblock %}
+
+{% block body %}
+    <h1>Academy index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>AcademyName</th>
+                <th>Description</th>
+                <th>FacebookUrl</th>
+                <th>TwitterUrl</th>
+                <th>LinkedInUrl</th>
+                <th>ParentsWaitingArea</th>
+                <th>ConditionOfParentsWaitingArea</th>
+                <th>AgeGroupMinimum</th>
+                <th>AgeGroupMaximum</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for academy in academies %}
+            <tr>
+                <td>{{ academy.id }}</td>
+                <td>{{ academy.AcademyName }}</td>
+                <td>{{ academy.Description }}</td>
+                <td>{{ academy.FacebookUrl }}</td>
+                <td>{{ academy.TwitterUrl }}</td>
+                <td>{{ academy.LinkedInUrl }}</td>
+                <td>{{ academy.ParentsWaitingArea ? 'Yes' : 'No' }}</td>
+                <td>{{ academy.ConditionOfParentsWaitingArea }}</td>
+                <td>{{ academy.AgeGroupMinimum }}</td>
+                <td>{{ academy.AgeGroupMaximum }}</td>
+                <td>
+                    <a href="{{ path('academy_show', {'id': academy.id}) }}">show</a>
+                    <a href="{{ path('academy_edit', {'id': academy.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('academy_new') }}">Create new</a>
+{% endblock %}
