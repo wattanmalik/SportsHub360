@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <title>Academy index</title>
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Academy index{% endblock %}
+>>>>>>> academy-create-functionality
 
 {% block body %}
     <h1>Academy index</h1>
@@ -10,6 +16,17 @@
             <tr>
                 <th>Id</th>
                 <th>AcademyName</th>
+<<<<<<< HEAD
+=======
+                <th>Description</th>
+                <th>FacebookUrl</th>
+                <th>TwitterUrl</th>
+                <th>LinkedInUrl</th>
+                <th>ParentsWaitingArea</th>
+                <th>ConditionOfParentsWaitingArea</th>
+                <th>AgeGroupMinimum</th>
+                <th>AgeGroupMaximum</th>
+>>>>>>> academy-create-functionality
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,6 +35,17 @@
             <tr>
                 <td>{{ academy.id }}</td>
                 <td>{{ academy.AcademyName }}</td>
+<<<<<<< HEAD
+=======
+                <td>{{ academy.Description }}</td>
+                <td>{{ academy.FacebookUrl }}</td>
+                <td>{{ academy.TwitterUrl }}</td>
+                <td>{{ academy.LinkedInUrl }}</td>
+                <td>{{ academy.ParentsWaitingArea ? 'Yes' : 'No' }}</td>
+                <td>{{ academy.ConditionOfParentsWaitingArea }}</td>
+                <td>{{ academy.AgeGroupMinimum }}</td>
+                <td>{{ academy.AgeGroupMaximum }}</td>
+>>>>>>> academy-create-functionality
                 <td>
                     <a href="{{ path('academy_show', {'id': academy.id}) }}">show</a>
                     <a href="{{ path('academy_edit', {'id': academy.id}) }}">edit</a>
@@ -25,7 +53,11 @@
             </tr>
         {% else %}
             <tr>
+<<<<<<< HEAD
                 <td colspan="3">no records found</td>
+=======
+                <td colspan="11">no records found</td>
+>>>>>>> academy-create-functionality
             </tr>
         {% endfor %}
         </tbody>

@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <title>Academy</title>
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Academy{% endblock %}
+>>>>>>> academy-create-functionality
 
 {% block body %}
     <h1>Academy</h1>
@@ -15,6 +21,41 @@
                 <th>AcademyName</th>
                 <td>{{ academy.AcademyName }}</td>
             </tr>
+<<<<<<< HEAD
+=======
+            <tr>
+                <th>Description</th>
+                <td>{{ academy.Description }}</td>
+            </tr>
+            <tr>
+                <th>FacebookUrl</th>
+                <td>{{ academy.FacebookUrl }}</td>
+            </tr>
+            <tr>
+                <th>TwitterUrl</th>
+                <td>{{ academy.TwitterUrl }}</td>
+            </tr>
+            <tr>
+                <th>LinkedInUrl</th>
+                <td>{{ academy.LinkedInUrl }}</td>
+            </tr>
+            <tr>
+                <th>ParentsWaitingArea</th>
+                <td>{{ academy.ParentsWaitingArea ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ConditionOfParentsWaitingArea</th>
+                <td>{{ academy.ConditionOfParentsWaitingArea }}</td>
+            </tr>
+            <tr>
+                <th>AgeGroupMinimum</th>
+                <td>{{ academy.AgeGroupMinimum }}</td>
+            </tr>
+            <tr>
+                <th>AgeGroupMaximum</th>
+                <td>{{ academy.AgeGroupMaximum }}</td>
+            </tr>
+>>>>>>> academy-create-functionality
         </tbody>
     </table>
 

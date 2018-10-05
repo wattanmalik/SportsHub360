@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Academy;
-use App\Form\Academy1Type;
+use App\Form\AcademyType;
 use App\Repository\AcademyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,7 @@ class AcademyController extends AbstractController
     public function new(Request $request): Response
     {
         $academy = new Academy();
-        $form = $this->createForm(Academy1Type::class, $academy);
+        $form = $this->createForm(AcademyType::class, $academy);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,7 +59,7 @@ class AcademyController extends AbstractController
      */
     public function edit(Request $request, Academy $academy): Response
     {
-        $form = $this->createForm(Academy1Type::class, $academy);
+        $form = $this->createForm(AcademyType::class, $academy);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
