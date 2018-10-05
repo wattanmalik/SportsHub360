@@ -21,22 +21,16 @@ class Sports
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $SportName;
+    private $sportname;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Academy", mappedBy="SportsId")
+     * @ORM\OneToMany(targetEntity="App\Entity\Academy", mappedBy="sports")
      */
     private $academies;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Academy", mappedBy="OtherSports")
-     */
-    private $academiesOtherSports;
 
     public function __construct()
     {
         $this->academies = new ArrayCollection();
-        $this->academiesOtherSports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,14 +38,14 @@ class Sports
         return $this->id;
     }
 
-    public function getSportName(): ?string
+    public function getSportname(): ?string
     {
-        return $this->SportName;
+        return $this->sportname;
     }
 
-    public function setSportName(string $SportName): self
+    public function setSportname(string $sportname): self
     {
-        $this->SportName = $SportName;
+        $this->sportname = $sportname;
 
         return $this;
     }
@@ -68,7 +62,7 @@ class Sports
     {
         if (!$this->academies->contains($academy)) {
             $this->academies[] = $academy;
-            $academy->addSportsId($this);
+            $academy->setSports($this);
         }
 
         return $this;
@@ -78,37 +72,9 @@ class Sports
     {
         if ($this->academies->contains($academy)) {
             $this->academies->removeElement($academy);
-            $academy->removeSportsId($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Academy[]
-     */
-    public function getAcademiesOtherSports(): Collection
-    {
-        return $this->academiesOtherSports;
-    }
-
-    public function addAcademiesOtherSport(Academy $academiesOtherSport): self
-    {
-        if (!$this->academiesOtherSports->contains($academiesOtherSport)) {
-            $this->academiesOtherSports[] = $academiesOtherSport;
-            $academiesOtherSport->setOtherSports($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAcademiesOtherSport(Academy $academiesOtherSport): self
-    {
-        if ($this->academiesOtherSports->contains($academiesOtherSport)) {
-            $this->academiesOtherSports->removeElement($academiesOtherSport);
             // set the owning side to null (unless already changed)
-            if ($academiesOtherSport->getOtherSports() === $this) {
-                $academiesOtherSport->setOtherSports(null);
+            if ($academy->getSports() === $this) {
+                $academy->setSports(null);
             }
         }
 
