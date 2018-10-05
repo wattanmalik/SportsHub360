@@ -13,28 +13,7 @@ class AcademyType extends AbstractType
     {
         $builder
             ->add('AcademyName')
-<<<<<<< HEAD
             ->add('sports')
-=======
-            ->add('Description')
-            ->add('FacebookUrl')
-            ->add('TwitterUrl')
-            ->add('LinkedInUrl')
-            ->add('ParentsWaitingArea')
-            ->add('ConditionOfParentsWaitingArea')
-            ->add('AgeGroupMinimum')
-            ->add('AgeGroupMaximum')
-            ->add('SportsId')
-            ->add('OtherSports')
-            ->add('openingHours')
-            ->add('gallery')
-            ->add('facilities')
-            ->add('amenities')
-            ->add('hostelFacility')
-            ->add('staffDetails')
-            ->add('tournaments')
-            ->add('achievements')
->>>>>>> academy-create-functionality
         ;
     }
 
